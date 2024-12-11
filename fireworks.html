@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Fireworks</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: black;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="fireworksCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('fireworksCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Resize canvas to fit full screen
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Firework particle class
+        class Firework {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                this.radius = Math.random() * 2 + 1;
+                this.speedX = (Math.random() - 0.5) * 10;
+                this.speedY = (Math.random() - 0.5) * 10;
+                this.alpha = 1;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.alpha -= 0.01; // Fade out
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.closePath();
+                ctx.fill();
+                ctx.restore();
+            }
+
+            isFaded() {
+                return this.alpha <= 0;
+            }
+        }
+
+        const fireworks = [];
+
+        // Function to create firework bursts
+        function createFirework(x, y) {
+            const colors = ['#ffcc00', '#ff00ff', '#00ccff', '#ff6600', '#ff0066', '#66ff00'];
+            const numParticles = Math.random() * 50 + 50;
+            for (let i = 0; i < numParticles; i++) {
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                fireworks.push(new Firework(x, y, color));
+            }
+        }
+
+        // Function to animate fireworks
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            fireworks.forEach((firework, index) => {
+                firework.update();
+                firework.draw();
+
+                if (firework.isFaded()) {
+                    fireworks.splice(index, 1); // Remove faded particles
+                }
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        // Trigger fireworks at random intervals and locations
+        setInterval(() => {
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height / 2; // Fireworks should explode in the top half
+            createFirework(x, y);
+        }, 800);
+
+        // Start the animation
+        animate();
+    </script>
+
+</body>
+</html>

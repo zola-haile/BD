@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:linear-gradient(to bottom right,rgba(29, 72, 51, 0.592),purple);
+    overflow: hidden;
+}
+
+.box {
+    background: url("Fiesta\ Sorpresa_.jpeg"),linear-gradient(to right, purple,pink);  /* White background with some transparency */
+    background-blend-mode: hard-light;
+    padding-top: 150px;
+    padding-left: 120px;
+    padding-right: 120px;
+    padding-bottom: 50px;
+    /* padding: 100px; */
+    text-align: center;
+    border-radius: 25px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+}
+
+.showimg{
+    width:290px;
+    height:350px;
+    border-radius: 20px;        /* Apply rounded corners */
+    transition: width 0.3s, height 0.3s, border-radius 0.3s; /* Smooth transition */
+}
+
+.showimg:hover {
+    width:310px;
+    height:370px;
+    border-radius: 50%;
+}
+
+#message {
+}
+
+#showMessageButton{
+    background: url('img.JPG');
+    background-size:310px,370px ;
+    border-radius: 15px;
+} 
+
+#asapVideo{
+    position: flex;
+    width: 600px;
+    border-radius: 15px;
+    
+
+}
+
+.floating_image{
+    position: absolute;
+    bottom: -2vh;
+    left: 80%; /* Starting horizontal position */
+    transform: translateX(0);
+    width: 150px;
+    height: 180px;
+    animation: floatUp 10s linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translate(-25%, 100vh); /* Start at original position */
+    }
+    100% {
+        transform: translate(-50%, -120vh); /* Move above the screen */
+    }
+}
+
+
+.move_hor{
+    position: absolute;
+    top: 10%; /* Center vertically */
+    left: -100%; /* Start off-screen on the left */
+    transform: translateY(-50%);
+    width: 650px;
+    height: 100px; 
+    
+    
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: moveLeft 10s linear infinite; /* Animation settings */
+}
+@keyframes moveLeft {
+    0% {
+        left: 100%; /* Start off-screen */
+    }
+    100% {
+        left: -50%; /* Move off-screen to the right */
+    }
+}
+
+#chopper{
+    width:150px;
+    height: 75px;
+}
+
+.dancing{
+    width: 100px;
+    height: 100px;
+    padding-top: 5%;
+}

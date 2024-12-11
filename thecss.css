@@ -1,0 +1,91 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('img2.jpg'), linear-gradient(to right, pink,purple);
+    background-blend-mode: soft-light;
+    background-size: contain;  /* Ensures the entire image is visible */
+    background-position: center;  /* Centers the image */
+    background-repeat: no-repeat; 
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    position: relative;
+    text-align: center;
+    background: #fff;
+    padding: 1px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: rotate(-15deg);
+}
+
+h1 {
+    font-size: 3rem;
+    color: #ff6f61;
+}
+
+p {
+    font-size: 1.5rem;
+    color: #555;
+}
+
+.balloons {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.balloon {
+    width: 60px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #ff6f61;
+    margin: 0 10px;
+    position: relative;
+}
+
+.balloon:before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 20px;
+    background-color: #555;
+}
+
+.balloon:nth-child(2) {
+    background-color: #ffb6c1;
+}
+
+.balloon:nth-child(3) {
+    background-color: #ffd700;
+}
+
+#her2{
+    background-blend-mode: soft-light ;
+    height: 100%;
+}
+.floating_image{
+    position: absolute;
+    bottom: -20vh; /* Start below the screen */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px; /* Set image size */
+    height: 10px;
+    animation: floatUp 5s linear infinite; /* Animation settings */
+}
+@keyframes floatUp {
+    0% {
+        transform: translate(-50%, 0); /* Start at original position */
+    }
+    100% {
+        transform: translate(-50%, -120vh); /* Move above the screen */
+    }
+}
